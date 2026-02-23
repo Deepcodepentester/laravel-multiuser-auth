@@ -22,30 +22,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function (Request $request) {
-    print_r(Auth::guard('vendor')->user());
-    echo("<br/>");
-    print_r(session()->getId());
-    
-    $check =Auth::guard('vendor')->attempt([
-        'email' => 'nebochidera16@gmail.com',
-        'password' => '12345678',
-    ]);
-    $request->session()->regenerate();
-    //dd(session()->all());
-    Auth::check();
-    if (Auth::guard('vendor')->check()) {
-        # code...
-        echo "logged in";
-    }
-    /* if ($check) {
-        # code...
-        //$request->session()->regenerate();
-    } */
-    //dd($check);
-    //dd(Auth::guard('vendor')->user());
-    //dd(session()->all());
-});
 
 Route::get('/test1', function (Request $request) {
     //$request->session()->put('key', 'value');
@@ -54,19 +30,6 @@ Route::get('/test1', function (Request $request) {
     $request->session()->invalidate();
     echo("<br/>");
     print_r(session()->getId());
-});
-Route::get('/test2', function (Request $request) {
-    print_r(Auth::guard('vendor')->user());
-    print_r(Auth::guard('admin')->user());
-    echo("<br/>");
-    print_r(session()->getId());
-    dd(session()->all());
-    ;
-    //dd(session()->getId());
-});
-
-Route::get('/test3', function (Request $request) {
-    return view("admin.index");
 });
 
 Route::get('/test4', function (Request $request) {
